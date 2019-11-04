@@ -10,6 +10,7 @@ class Movies extends Component {
     const movies = this.state.movies.filter(m => m._id !== movie._id);
     console.log(movies);
     this.setState({ movies: movies });
+    // this is a event function
   };
 
   listitems = this.state.movies.map(c => (
