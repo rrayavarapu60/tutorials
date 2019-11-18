@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { genres } from "../../services/fakeGenreService";
+import React from "react";
+//import { genres } from "../../services/fakeGenreService";
 
 const ListGroup = props => {
   const { Genres: genres, onGenreChange, selectedGenre } = props;
+  console.log("in list group:", genres, selectedGenre);
 
   return (
     <ul className="list-group">

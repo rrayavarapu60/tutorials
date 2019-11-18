@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "font-awesome/css/font-awesome.min.css";
 
 const Like = props => {
   let classname = "fa fa-heart";
+  console.log("like module");
   if (!props.liked) {
     classname += "-o";
   }
