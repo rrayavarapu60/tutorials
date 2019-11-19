@@ -15,7 +15,7 @@ class Movies extends Component {
     pageSize: 4,
     currentPage: 1,
     moviesCount: 0,
-    selectedGenre: "AllGenres",
+    selectedGenre: [{ name: "AllGenres" }],
     sortedPath: { path: "title", order: "asc" }
   };
 
@@ -54,21 +54,18 @@ class Movies extends Component {
   };
 
   onGenreChange = Genre => {
+    console.log("on genre change: ", Genre);
     this.setState({ selectedGenre: Genre, currentPage: 1 });
   };
 
-  render() {
+  getPagedMovies = () => {
     const {
       pageSize,
       currentPage,
       movies,
-      moviesCount,
       selectedGenre,
       sortedPath
     } = this.state;
-
-    if (moviesCount === 0)
-      return <p align="center">There are no movies to show in the database</p>;
 
     const sortedMovies = _.orderBy(
       movies,
@@ -78,10 +75,21 @@ class Movies extends Component {
 
     const filteredMovies =
       selectedGenre && selectedGenre._id
-        ? sortedMovies.filter(m => m.genre.name === selectedGenre)
+        ? sortedMovies.filter(m => m.genre.name === selectedGenre.name)
         : sortedMovies;
 
     const paginatedMovies = paginate(filteredMovies, currentPage, pageSize);
+
+    return { totalMovieCount: filteredMovies.length, data: paginatedMovies };
+  };
+
+  render() {
+    const { pageSize, currentPage, moviesCount, sortedPath } = this.state;
+
+    if (moviesCount === 0)
+      return <p align="center">There are no movies to show in the database</p>;
+
+    const { totalMovieCount, data: paginatedMovies } = this.getPagedMovies();
 
     return (
       <div className="row" padding="20px" margin="1 15 10 10">
@@ -95,14 +103,14 @@ class Movies extends Component {
         <div className="col">
           <MovieTable
             movies={paginatedMovies}
-            length={moviesCount}
+            length={totalMovieCount}
             handleLike={this.handleLike}
             handleDelete={this.handleDelete}
             onSort={this.handleSort}
             sortedPath={sortedPath}
           />
           <Pagination
-            itemsCount={paginatedMovies.length}
+            itemsCount={totalMovieCount}
             currentPage={currentPage}
             pageSize={pageSize}
             onPageChange={this.handlePageChange}
