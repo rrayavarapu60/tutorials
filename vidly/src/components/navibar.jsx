@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navibar = () => {
   return (
     <ul className="nav justify-content-left">
       <li className="nav-item">
-        <Link className="nav-link active" to="/movies">
+        <NavLink className="nav-link active" to="/movies">
           Movies
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/customers">
+        <NavLink className="nav-link" to="/customer">
           Customers
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/Rental">
+        <Link className="nav-link" to="/rental">
           Rentals
         </Link>
       </li>
