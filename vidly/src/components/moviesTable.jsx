@@ -44,6 +44,7 @@ class MovieTable extends Component {
       <div>
         <p align="center">Showing {length} movies in the database</p>
         <Table
+          className="table"
           data={movies}
           columns={this.columns}
           sortedPath={sortedPath}

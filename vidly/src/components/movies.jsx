@@ -93,7 +93,7 @@ class Movies extends Component {
 
     return (
       <div className="row" padding="20px" margin="1 15 10 10">
-        <div className="col4">
+        <div className="col4" padding="20px" margin-left="20px">
           <ListGroup
             Genres={this.state.genres}
             onGenreChange={this.onGenreChange}

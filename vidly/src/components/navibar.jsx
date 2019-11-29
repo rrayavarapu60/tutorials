@@ -3,23 +3,38 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navibar = () => {
   return (
-    <ul className="nav justify-content-left">
-      <li className="nav-item">
-        <NavLink className="nav-link active" to="/movies">
-          Movies
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/customer">
-          Customers
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" to="/rental">
-          Rentals
-        </Link>
-      </li>
-    </ul>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand" to="/">
+        Vidly
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <NavLink className="nav-item nav-link" to="/movies">
+            Movies
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/customer">
+            Customers
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/rental">
+            Rentals
+          </NavLink>
+          <NavLink className="nav-item nav-link" to="/loginForm">
+            Login
+          </NavLink>
+        </div>
+      </div>
+    </nav>
   );
 };
 
